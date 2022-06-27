@@ -1,0 +1,19 @@
+{
+  "name": "atlas-backup-to-gcp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "^6.0.1",
+    "@mhoc/axios-digest-auth": "^0.8.0",
+    "axios": "^0.27.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
