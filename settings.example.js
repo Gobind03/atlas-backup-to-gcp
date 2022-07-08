@@ -5,5 +5,6 @@ module.exports = {
     private_key: "",
     nSnapshots: 2,
     gcp_bucket_name: "",
-    gcp_service_acc_key: "sample.json"
+    gcp_service_acc_key: "sample.json",
+    polling_time_ms: 5000
 };
