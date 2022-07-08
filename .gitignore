@@ -133,3 +133,5 @@ backups/*
 settings.js
 
 key.json
+
+.DS_STORE
