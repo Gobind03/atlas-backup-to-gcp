@@ -126,7 +126,7 @@ class AtlasBackup {
                 }
             }
             console.log("Ending polling event. Sleeping ...");
-            this.#sleep(this.polling_time_ms);
+            await this.#sleep(this.polling_time_ms);
         }
         console.log("Polling Done ...")
         return successfulDownloads;
@@ -143,7 +143,7 @@ class AtlasBackup {
         }
         for (let itr = 0; itr < urls.length; itr++) {
             console.log("Initiating Download for Job ID: " + urls[itr].id);
-            let backup_dir = dir + "/" + urls[itr].id;
+            let backup_dir = dir + "/" + urls[itr].timestamp.replace(":", "");
             if (!fs.existsSync(backup_dir)) {
                 fs.mkdirSync(backup_dir);
             }
@@ -160,7 +160,7 @@ class AtlasBackup {
                                 file.close();
                                 console.log("Concluded Download for " + urls[itr].components[itr2].replicaSetName
                                     + "in " + urls[itr].id);
-                                resolve(urls[itr].id + "/" +
+                                resolve(urls[itr].timestamp.replace(":", "") + "/" +
                                     urls[itr].components[itr2].replicaSetName + ".tar.gz");
                             });
                         })
@@ -172,7 +172,7 @@ class AtlasBackup {
     }
 
     async #sleep(mSec) {
-        new Promise(res => setTimeout(res, mSec));
+        return new Promise(res => setTimeout(res, mSec));
     }
 }
 

@@ -19,7 +19,7 @@ atlas_backup.download_backups(settings.nSnapshots).then(function (success) {
             let uploadPromises = [];
             for (let itr = 0; itr < res.length; itr++) {
                 uploadPromises.push(new Promise((resolve, reject) => {
-                    console.log("Sarting Upload for " + res[itr] + " to GCP");
+                    console.log("Starting Upload for " + res[itr] + " to GCP");
                     bucket.upload("backups/" + res[itr], {
                         destination: res[itr],
                         metadata: {
