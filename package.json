@@ -14,7 +14,6 @@
     "@mhoc/axios-digest-auth": "^0.8.0",
     "axios": "^0.27.2",
     "fs": "^0.0.1-security",
-    "node-tar.gz": "^1.0.0",
     "path": "^0.12.7",
     "targz": "^1.0.1"
   }

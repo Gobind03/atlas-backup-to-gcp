@@ -21,19 +21,23 @@ atlas_backup.download_backups(settings.nSnapshots).then(function (success) {
             let uploadPromises = [];
             let compressionPromises = [];
             for (let itr = 0; itr < res.length; itr++) {
+
+                // Create Compressions
                 compressionPromises.push(new Promise((resolve, reject) => {
                     targz.compress({
-                        src: "backups/" + res[itr],
-                        dest: res[itr] + '.tar.gz'
+                        src: __dirname + "/backups/" + res[itr],
+                        dest: __dirname + "/backups/" + res[itr] + '.tar.gz'
                     }, function () {
                         console.log('Compressed ' + res[itr]);
                         resolve(res[itr] + '.tar.gz')
                     })
                 }));
+
+                // Initiate Uploads
                 uploadPromises.push(new Promise((resolve, reject) => {
                     console.log("Starting Upload for " + res[itr] + " to GCP");
-                    bucket.upload(res[itr] + '.tar.gz', {
-                        destination: res[itr],
+                    bucket.upload(__dirname + "/backups/" + res[itr] + ".tar.gz", {
+                        destination: res[itr] + ".tar.gz",
                         metadata: {
                             metadata: {
                                 TS: Date.now()

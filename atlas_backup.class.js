@@ -160,8 +160,7 @@ class AtlasBackup {
                                 file.close();
                                 console.log("Concluded Download for " + urls[itr].components[itr2].replicaSetName
                                     + "in " + urls[itr].id);
-                                resolve(urls[itr].timestamp.replace(":", "") + "/" +
-                                    urls[itr].components[itr2].replicaSetName + ".tar.gz");
+                                resolve(urls[itr].timestamp.replace(":", ""));
                             });
                         })
                 })
